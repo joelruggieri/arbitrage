@@ -1,0 +1,20 @@
+
+Preguntas:
+Orden -> Cuantos estados hay para una orden? entiendo que NEW, REJECTED, pero en la documentacion aparere un PENDING_NEW o un FILLED tambien.
+         Cuales son todos los estados posibles que puede devolver el servicio rest/order/id? y qué significan cada uno
+      -> En que estados tiene que estar una orden para que pueda ser cancelada?
+      -> Cual es la respuesta de rofex ante un intento de cancelacion, de una orden ya cancelada?
+      -> como deberia ser el esquema de reintentos ante un timeout o un internal server error del lado de rofex
+
+-> Market Data / Instrumento : Todos los symbolos de instrumentos a 48 hs, tienen el mismo formato en la api de rofex? Sino, Como determino cuales son a 48 hs?
+
+-> Prguntarle al tincho cómo puedo probar hacer ordenes, de compra venta? Si puedo probar con la cuenta que hay o no?
+
+-> Preguntar al Dante: A que se le llama trade. Qué necesita para ser representado? Qué restricciones tiene?
+
+Tecnicas:
+ -> Hacer custom maybes para ciertos casos que nos intereses interpretar
+ -> Hacer privados los atributos que correspondan, en las diferentes clases
+ Mejora:
+ -> Partir de los Instrumentos disponibles (http://pbcp-remarket.cloud.primary.com.ar/rest/instruments/all)
+ -> ver Instrumentos disponibles detallados (http://pbcp-remarket.cloud.primary.com.ar/rest/instruments/details)
