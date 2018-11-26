@@ -12,6 +12,14 @@ Orden -> Cuantos estados hay para una orden? entiendo que NEW, REJECTED, pero en
 
 -> Preguntar al Dante: A que se le llama trade. Qué necesita para ser representado? Qué restricciones tiene?
 
+-> Podria querer hacer la compra desde una cuenta, y la venta desde otra?
+
+-> puedo hacer la operacion de compra y de venta al mismo momento? o deberia haber terminado ok la de compra primero?
+
+-> cuanto tiempo tengo para cancelar una operacion? depende del estado en el que esté?
+
+-> el volument siempre es un valor entero, o podria no serlo?
+
 Tecnicas:
  -> Hacer custom maybes para ciertos casos que nos intereses interpretar
  -> Hacer privados los atributos que correspondan, en las diferentes clases

@@ -11,23 +11,22 @@ class InstrumentSnapshot:
         self.__buy_offrerors = buy_offerors
         self.__sell_offerors = sell_offerors
 
-    def is_counted_immediately(self):
+    def is_counted_immediately(self) -> bool:
         return self.symbol.endswith(str(LiquidityPeriod.CI.value))
 
-    def is_48_hs_delayed(self):
+    def is_48_hs_delayed(self) -> bool:
         return self.symbol.endswith(str(LiquidityPeriod.T2.value))
 
-    def get_homologous_instrument_symbol(self):
-        if self.is_counted_immediately():
-            return Just(self.symbol.replace(str(LiquidityPeriod.CI.value), str(LiquidityPeriod.T2.value)))
-        if self.is_48_hs_delayed():
-            return Just(self.symbol.replace(str(LiquidityPeriod.T2.value), str(LiquidityPeriod.CI.value)))
-        else:
-            print("Symbol " + self.symbol + " could not understood as counted immediately neither 48hs delayed")
-            return Nothing
-
-    def get_buy_offerors(self):
+    def get_buy_offerors(self) -> list:
         return self.__buy_offrerors
 
-    def get_sell_oferrors(self):
+    def get_sell_oferrors(self) -> list:
         return self.__sell_offerors
+
+    def get_best_buy_oferror(self) -> Offeror:
+        best = self.__buy_offrerors[0] if self.__buy_offrerors else None
+        return best
+
+    def get_best_sell_oferror(self) -> Offeror:
+        best = self.__sell_offerors[0] if self.__sell_offerors else None
+        return best

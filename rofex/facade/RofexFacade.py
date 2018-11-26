@@ -1,6 +1,6 @@
-from model.Instrument import Instrument
 from model.Operation import Operation
 from model.Order import Order
+from model.Instrument import InstrumentSnapshot
 from model.enumerations import OrderSide
 from rofex.model.dtos import *
 from rofex.client.RofexClient import RofexClient
@@ -32,12 +32,12 @@ class RofexFacade:
 
     #TODO ver que es el depth. si es importante o no.
     #TODO ver que onda despues la respuesta del cliente
-    def get_instrument_market_data(self, instrument: Instrument, depth: int):
+    def get_instrument_market_data(self, instrument: InstrumentSnapshot, depth: int):
         return self.get_auth_token() >> (lambda token: self.client.get_market_data(token, instrument.symbol, instrument.market_id, depth))
 
     #TODO ver si hace falta sino sacarlo y mandarle el homologo desde afuera
-    def get_homologous_instrument_market_data(self, instrument: Instrument, depth: int):
-        return instrument.get_homologous_instrument_symbol >> (lambda homologous_symbol: self.get_auth_token() >>
+    def get_homologous_instrument_market_data(self, instrument: InstrumentSnapshot, depth: int):
+        return obtain_homologous_instrument_symbol(instrument) >> (lambda homologous_symbol: self.get_auth_token() >>
                                                                (lambda token: self.client.get_market_data(token, homologous_symbol, instrument.market_id, depth)))
 
     #TODO podriamos chequear que el market id del instrumento sea el de rofex
